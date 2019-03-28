@@ -1,8 +1,12 @@
 {
-  "name": "make-check-2",
+  "name": "make-check",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.7",
+    "prop-types": "^15.7.2",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-scripts": "2.1.8"
