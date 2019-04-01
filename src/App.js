@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import { CheckComp, PaymentDataComp } from './components';
 
 // Calculates 20% VAT
-const calculateVAT = ( totalBeforeVAT ) => {
-    const VAT = ( totalBeforeVAT / 1.2 - totalBeforeVAT ) * ( -1 );
+const calculateVAT = total => {
+    const VAT = ( total / 1.2 - total ) * ( -1 );
     return VAT.toFixed( 2 );
 };
 
@@ -19,9 +19,8 @@ class App extends Component {
         checkId: '',
         cardNum: '',
         products: [],
-        totalBeforeVAT: 0,
-        VAT: '',
-        total: '',
+        total: 0,
+        VAT: ''
     };
 
     addProduct = product => {
@@ -31,14 +30,13 @@ class App extends Component {
                 prevState.products.push( product );
             }
 
-            // Calculate totalBeforeVAT each time the product is added.
-            prevState.totalBeforeVAT = 0;
+            // Calculate "total" each time the product is added.
+            prevState.total = 0;
             prevState.products.forEach( product => {
-                prevState.totalBeforeVAT += Number( product.price );
+                prevState.total += Number( product.price );
             });
 
-            prevState.VAT = calculateVAT( prevState.totalBeforeVAT );
-            prevState.total = prevState.totalBeforeVAT + Number( prevState.VAT );
+            prevState.VAT = calculateVAT( prevState.total );
 
             return prevState;
         })
